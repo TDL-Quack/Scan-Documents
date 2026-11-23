@@ -49,4 +49,4 @@ Voir [CONFIDENTIALITE.md](CONFIDENTIALITE.md). En résumé : l'extension ne coll
 
 ---
 
-<sub>Pour publier une nouvelle version : modifier `version` dans `extension/manifest.json`, puis créer un tag `vX.Y.Z`. Le zip est alors généré automatiquement dans les *Releases*.</sub>
+<sub>Pour publier une nouvelle version : modifier les fichiers dans `extension/` et augmenter `version` dans `extension/manifest.json`. À chaque envoi sur `main`, le zip est régénéré automatiquement dans les *Releases*.</sub>
