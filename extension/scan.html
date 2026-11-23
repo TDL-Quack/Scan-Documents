@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Scanner de documents</title>
+  <link rel="icon" href="icons/icon32.png">
+  <link rel="stylesheet" href="scan.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div class="brand"><img src="icons/icon32.png" alt=""> Scanner de documents</div>
+      <div class="actions">
+        <label class="btn" title="Ajouter une photo depuis l'ordinateur">
+          ＋ Ajouter une photo
+          <input id="file-input" type="file" accept="image/*" multiple hidden>
+        </label>
+        <button id="btn-clear" class="btn ghost" title="Retirer toutes les pages">Tout effacer</button>
+        <button id="btn-print" class="btn primary" title="Imprimer ou enregistrer en PDF (⌘P)">🖨 Imprimer / PDF</button>
+      </div>
+    </header>
+
+    <main>
+      <aside id="pages">
+        <div class="aside-title">Pages</div>
+        <ol id="page-list"></ol>
+      </aside>
+
+      <section id="editor" class="empty">
+        <div id="empty-state">
+          <div class="empty-icon">📄</div>
+          <h2>Aucune page pour l'instant</h2>
+          <p>Dans Gmail, passez la souris sur une photo et cliquez sur <b>📄 Numériser</b><br>
+             (ou clic droit sur l'image › <b>Numériser ce document</b>).</p>
+          <p>Vous pouvez aussi <b>glisser une photo ici</b>, la <b>coller</b> (⌘V) ou utiliser « Ajouter une photo ».</p>
+        </div>
+
+        <div id="workspace">
+          <div class="toolbar">
+            <div class="group" id="filters">
+              <button data-filter="color" class="chip">Couleur améliorée</button>
+              <button data-filter="gray" class="chip">Niveaux de gris</button>
+              <button data-filter="bw" class="chip">Noir et blanc</button>
+              <button data-filter="none" class="chip">Original</button>
+            </div>
+            <div class="group">
+              <button id="btn-rot-l" class="chip" title="Pivoter à gauche">⟲</button>
+              <button id="btn-rot-r" class="chip" title="Pivoter à droite">⟳</button>
+              <button id="btn-auto" class="chip" title="Redétecter les bords du document">Cadre auto</button>
+              <button id="btn-full" class="chip" title="Garder l'image entière">Image entière</button>
+              <button id="btn-a4" class="chip" title="Rétablir les proportions d'une feuille A4 (photo prise de biais)">Format A4</button>
+            </div>
+          </div>
+
+          <div class="panes">
+            <div class="pane">
+              <div class="pane-title">Photo d'origine — <span class="hint">déplacez les 4 coins bleus si besoin</span></div>
+              <div class="stage" id="src-stage"><canvas id="src-canvas"></canvas></div>
+            </div>
+            <div class="pane">
+              <div class="pane-title">Résultat <span id="busy" class="hint" hidden>calcul…</span></div>
+              <div class="stage" id="out-stage"><canvas id="out-canvas"></canvas></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" hidden></div>
+    <div id="drop-overlay" hidden>Déposez la photo ici</div>
+  </div>
+
+  <!-- Contenu imprimé : une page A4 par document -->
+  <div id="print-area"></div>
+
+  <script src="scan.js"></script>
+</body>
+</html>

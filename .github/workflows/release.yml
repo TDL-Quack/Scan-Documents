@@ -1,0 +1,48 @@
+name: Publier le zip de l'extension
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vérifier que la version du manifest correspond au tag
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          V=$(jq -r .version extension/manifest.json)
+          if [ "v$V" != "${GITHUB_REF_NAME}" ]; then
+            echo "::error::Le tag ${GITHUB_REF_NAME} ne correspond pas à la version $V du manifest"
+            exit 1
+          fi
+
+      - name: Construire scanner-docs.zip
+        run: |
+          mkdir -p build/scanner-docs
+          cp -r extension/* build/scanner-docs/
+          cd build && zip -r -X ../scanner-docs.zip scanner-docs
+
+      - name: Créer la release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          if [ "${GITHUB_REF_TYPE}" != "tag" ]; then
+            TAG="v$(jq -r .version extension/manifest.json)"
+          fi
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" scanner-docs.zip --clobber
+          else
+            gh release create "$TAG" scanner-docs.zip \
+              --title "Scanner de documents $TAG" \
+              --notes "Téléchargez **scanner-docs.zip** ci-dessous, puis suivez les instructions d'installation du README." \
+              --target "${GITHUB_SHA}"
+          fi

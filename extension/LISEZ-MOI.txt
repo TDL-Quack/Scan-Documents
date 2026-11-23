@@ -1,0 +1,55 @@
+SCANNER DE DOCUMENTS POUR GMAIL — extension Chrome
+====================================================
+
+Transforme les photos de documents envoyées par les patients en documents
+« scannés » (recadrés, redressés, fond blanc) prêts à imprimer.
+Tout le traitement se fait dans Chrome, sur l'ordinateur : aucune image
+n'est envoyée sur Internet.
+
+
+INSTALLATION (une seule fois, environ 1 minute)
+-----------------------------------------------
+1. Double-cliquer sur le fichier zip pour le décompresser. Ranger le dossier
+   « scanner-docs » à un endroit où il ne sera pas supprimé
+   (par exemple dans « Documents »).
+2. Dans Chrome, taper dans la barre d'adresse :  chrome://extensions
+3. En haut à droite, activer « Mode développeur ».
+4. Cliquer sur « Charger l'extension non empaquetée » et choisir le dossier
+   « scanner-docs ».
+5. Cliquer sur l'icône puzzle (en haut à droite de Chrome) puis sur l'épingle
+   à côté de « Scanner de documents pour Gmail » pour garder l'icône visible.
+6. Recharger l'onglet Gmail s'il était déjà ouvert.
+
+
+UTILISATION
+-----------
+• Dans Gmail, passer la souris sur la photo (vignette de pièce jointe ou image
+  dans le mail) : un bouton bleu « 📄 Numériser » apparaît. Cliquer dessus.
+  (Autre possibilité : clic droit sur l'image › « Numériser ce document ».)
+• Le scanner s'ouvre dans un nouvel onglet avec le document détecté.
+  Si le cadre n'est pas parfait, déplacer les 4 coins bleus.
+• Choisir le rendu : Couleur améliorée, Niveaux de gris, Noir et blanc
+  (économise l'encre) ou Original.
+• Plusieurs photos ? Cliquer « Numériser » sur chacune : elles s'ajoutent
+  comme pages du même document.
+• Cliquer « 🖨 Imprimer / PDF ». Dans la fenêtre d'impression, on peut
+  aussi choisir « Enregistrer au format PDF » pour l'archiver dans le dossier
+  patient.
+
+Autres moyens d'ajouter une photo : glisser-déposer un fichier dans la page,
+le coller (⌘V) ou utiliser « ＋ Ajouter une photo ». L'icône de l'extension
+ouvre le scanner directement.
+
+Boutons utiles : ⟲ ⟳ (pivoter), « Cadre auto » (redétecter les bords),
+« Image entière » (ne pas recadrer), « Format A4 » (rétablit les proportions
+d'une feuille photographiée de biais ; activé automatiquement quand c'est
+pertinent).
+
+
+EN CAS DE SOUCI
+---------------
+• Le bouton n'apparaît pas : recharger l'onglet Gmail.
+• « Impossible de récupérer l'image » : télécharger la pièce jointe, puis la
+  glisser dans la page du scanner.
+• Chrome peut afficher au démarrage un message sur les extensions en mode
+  développeur : c'est normal, il suffit de le fermer.
